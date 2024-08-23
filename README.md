@@ -1,4 +1,4 @@
-# Local-Model-API
+# Local Model API
 Python code to set up and test a local API with the downloaded models. 
 
 ### Setting up and using the API
