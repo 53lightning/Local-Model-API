@@ -34,7 +34,7 @@ llm = pipeline(
     "text-generation",
     model = model_path,
     model_kwargs = {"torch_dtype": torch.bfloat16},
-    device_map = 'auto'
+    device_map = "auto"
 )
 
 # initialize flask app
@@ -44,7 +44,7 @@ app = Flask(__name__)
 @app.route('/inference', methods = ['POST'])
 def inference():
     data = request.json # retrieve the users request
-    llm_rsp = llm(data['text'], max_length = data.get('max_length', 512), temperature = data.get('temperature', 0.0), truncation = True)[0]["generated_text"] # call the llm
+    llm_rsp = llm(data['text'], max_length = data.get('max_length', 512), temperature = data.get('temperature', 0.0), truncation = False)[0]["generated_text"] # call the llm
     return jsonify({"response": llm_rsp}) # return the response
 
 # starting server
